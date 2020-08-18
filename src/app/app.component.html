@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">  
+  <div class="loggo"><h1>Peace of mind</h1></div> 
+  <div class="nav">
+    <form action="/action_page.php">
+      <input type="text" placeholder="Search.." name="search">
+      
+    </form>
+  <button mat-button routerLink="/">Home</button>  
+  <button mat-button routerLink="/about">About</button>
+  <!--admin check needs to be added here so only appers when the user is the admin -->
+  <button mat-button routerLink="/admin">admin</button>
+  </div>
+</mat-toolbar>
+<div class="loggo">
+  <button mat-button>shop</button>
+  <button mat-button>hair</button>
+  <button mat-button>book</button>
+  <button mat-button>hair style</button>
+</div>
+<hr>
+<router-outlet></router-outlet>

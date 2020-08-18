@@ -1,0 +1,47 @@
+<h4>add product</h4>
+
+<label for="Product Id">product id:</label><br>
+<input type="text" name="id" [(ngModel)]="id">
+
+<label for="pname">product name:</label><br>
+<input type="text" name="name" [(ngModel)]="name">
+
+<label for="pname">product price:</label><br>
+<input type="text" name="price" [(ngModel)]="price">
+
+<label for="pname">product Description:</label><br>
+<input type="text" name="Description" [(ngModel)]="Description">
+
+<label for="pname">product stock:</label><br>
+<input type="text" name="stock" [(ngModel)]="stock">
+
+<input type="file" (change)="showPreview($event)">
+<button (click)="save()">Save</button>
+
+<hr>
+
+<br><br>
+
+
+<h4>File View</h4>
+
+<input type="text" name="SearchId" ngDefaultControl [(ngModel)]="SearchId"  placeholder="Enter Unique Search Key">
+
+<button (click)="Search(SearchId)">View all</button>
+<!--<button (click)="Search()">Search</button>-->
+<hr>
+
+
+<div *ngFor="let product of products">
+    
+    <img mat-card-image src= "{{product.url}}" style="width:100px;height:60px"/> <br>
+    <label for="pname">product id {{product.id}}:</label><br>
+    <label for="pname">product name: {{product.name}}</label><br>
+    <label for="pname">product price: {{product.price}}</label><br>
+    <label for="pname">product Description: {{product.Description}}</label><br>
+    <label for="pname">product stock: {{product.price}}</label><br>
+    <button (click)="deleteProduct(product)">delect</button>
+</div>
+
+
+
