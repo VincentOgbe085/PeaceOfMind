@@ -38,8 +38,8 @@ export class ProductService {
     return this.imageDetailList;
   }
 
-  getsearch(id: string){
-    console.log(id);
+  getsearch(id: string): AngularFireObject<any>{
+    //console.log(id);
     this.productitem = this.firebase.object('product/' + id);
     console.log(this.productitem);
     return this.productitem;
@@ -75,39 +75,26 @@ export class ProductService {
     );
   }
   deleteProduct(id: string) {
-    console.log(id);
-   // this.firebase.object(id).remove();
+   
     this.productitem  = this.firebase.object('product/' + id);
-    console.log(this.productitem);
     this.productitem.remove();
-
-  
-    // this.imageDetailList.snapshotChanges().subscribe(
-    // list => {
-    //   this.fileList = list.map(item => { return item.payload.val();  });
-    //   this.fileList.forEach(element => {
-    //     if(element.id===value)
-    //     return this.imageDetailList.remove(element.id);
-    //   });
-    
-    // }
-    // );
   }
 
-  Search(value):any{
+  Search(id: string):any{
+    console.log(id);
     this.imageDetailList.snapshotChanges().subscribe(
       list => {
         this.fileList = list.map(item => { return item.payload.val();  });
         this.fileList.forEach(element => {
-          if(element.id===value){
-          this.msg = element;
+          if(element.id===id){
+          return this.msg = element;
           }
           
         });
         if(this.msg==='error')
           alert('No record found');
         else{
-          console.log(this.msg);
+         console.log(this.msg);
           return(this.msg)
          
         }

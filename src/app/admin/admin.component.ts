@@ -32,6 +32,7 @@ export class AdminComponent{
   edit:any;
 
   a: any;
+  s: any;
 
   title = "cloudsSorage";
   selectedFile: File = null;
@@ -44,18 +45,8 @@ export class AdminComponent{
 
 
   ngOnInit() {
-    let s = this.productService.getImageDetailList();
-
-    s.snapshotChanges().subscribe(data => {
-      this.products = [];
-      data.forEach(item => {
-        this.a = item.payload.toJSON(); 
-        this.a['$key'] = item.key;
-        this.products.push(this.a as Product)
-      })
-
-    })
-    //this.productService.getsearch(this.startAt,this.endAt).valueChanges().subscribe(products => this.products = products)
+    this.s = this.productService.getImageDetailList();
+  
 
   }
 
@@ -78,18 +69,31 @@ export class AdminComponent{
   }
 
   view(){
-    //this.productService.getImage(this.file);
-    //console.log( this.productService.getImage(this.file));
-
-      this.productService.getImageDetailList().valueChanges().subscribe(products => {
-        this.products = products;
+    
+      this.s.snapshotChanges().subscribe(data => {
+        this.products = [];
+        data.forEach(item => {
+          this.a = item.payload.toJSON(); 
+          this.a['$key'] = item.key;
+          this.products.push(this.a as Product)
+        })
+  
       })
 
    
   }
   Search(SearchId){
     
-  this.productService.getsearch(SearchId);
+    // this.products = this.productService.Search(SearchId);
+    // console.log(this.products);
+
+    this.productService.Search(SearchId).subscribe(products => {
+        this.products = products;
+        console.log(this.products);
+      
+      })
+   
+  };
     
    //this.edit= this.productService.Search(this.SearchId);
   // this.edit.subscribe(thi)
@@ -101,7 +105,6 @@ export class AdminComponent{
    // })
 
 
-  }
   deleteProduct(product) {
     if (window.confirm('Are sure you want to delete this student ?')) {
     this.productService.deleteProduct(product.$key);
@@ -109,27 +112,4 @@ export class AdminComponent{
   
   }
 
-  // onFileSelected(event) {
-  //   var n = Date.now();
-  //   const file = event.target.files[0];
-  //   const filePath = `product/${n}`;
-  //   const fileRef = this.storage.ref(filePath).put(file);
-  //   const task = this.storage.upload(`RoomsImages/${n}`, file);
-  //   task.snapshotChanges().pipe(
-  //       finalize(() => {
-  //        // this.downloadURL = fileRef.getDownloadURL();
-  //         this.downloadURL.subscribe(url => {
-  //           if (url) {
-  //             this.fb = url;
-  //           }
-  //           console.log(this.fb);
-  //         });
-  //       })
-  //     ).subscribe(url => {
-  //       if (url) {
-  //         console.log(url);
-  //       }
-  //     });
-
-  // }
 }

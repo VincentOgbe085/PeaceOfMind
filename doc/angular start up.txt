@@ -1,0 +1,15 @@
+You use the Angular CLI to create projects, generate application 
+and library code, and perform a variety of ongoing 
+development tasks such as testing, bundling, and deployment.
+
+- npm install -g @angular/cli
+
+running the application 
+
+The Angular CLI includes a server, so that you can build and serve your app locally.
+
+Navigate to the workspace folder.
+
+Run the following command: ng serve --open
+
+The ng serve command launches the server, watches your files, and rebuilds the app as you make changes to those files.
