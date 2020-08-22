@@ -46,6 +46,7 @@ export class AdminComponent{
 
   ngOnInit() {
     this.s = this.productService.getImageDetailList();
+    
   
 
   }
@@ -84,26 +85,15 @@ export class AdminComponent{
   }
   Search(SearchId){
     
-    // this.products = this.productService.Search(SearchId);
-    // console.log(this.products);
+   this.productService.Search(SearchId).valueChanges().subscribe(products => {
 
-    this.productService.Search(SearchId).subscribe(products => {
-        this.products = products;
-        console.log(this.products);
-      
-      })
-   
-  };
+      this.products = products;
+ 
     
-   //this.edit= this.productService.Search(this.SearchId);
-  // this.edit.subscribe(thi)
+  })
+      
 
-    // this.productService.Search(this.SearchId).valueChanges().subscribe(products => {
-    //   this.products = products;
-
-     // console.log(this.products);
-   // })
-
+  };
 
   deleteProduct(product) {
     if (window.confirm('Are sure you want to delete this student ?')) {

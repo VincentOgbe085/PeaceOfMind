@@ -14,6 +14,7 @@ export class ProductService {
   private dbPath = 'Product';
 
   productListRef: AngularFireList<any>;
+  searchItem :  Observable<any>;
   productitem: AngularFireObject<any>; 
 
   imageDetailList: AngularFireList<any>;
@@ -30,8 +31,13 @@ export class ProductService {
   products:any[];
 
   constructor(public afs: AngularFirestore, @Inject(AngularFireDatabase) private firebase: AngularFireDatabase) {
+    
+    this.imageDetailList = this.firebase.list('/product');
+  
+  }
 
-    this.imageDetailList = this.firebase.list('/product')
+  ngOnInit(){
+    this.Search;
   }
 
   getImageDetailList(): AngularFireList<any>  {
@@ -80,29 +86,14 @@ export class ProductService {
     this.productitem.remove();
   }
 
-  Search(id: string):any{
+
+  Search(id: string){
     console.log(id);
-    this.imageDetailList.snapshotChanges().subscribe(
-      list => {
-        this.fileList = list.map(item => { return item.payload.val();  });
-        this.fileList.forEach(element => {
-          if(element.id===id){
-          return this.msg = element;
-          }
-          
-        });
-        if(this.msg==='error')
-          alert('No record found');
-        else{
-         console.log(this.msg);
-          return(this.msg)
-         
-        }
-      }
-    );
-  }
-  
+
+    return this.firebase.list('product', ref => ref.orderByChild('id').equalTo(id));
+
+
+
 }
 
-
-
+}
