@@ -60,25 +60,14 @@ export class ProductService {
       Description: Description,
       stock: stock,
     };
-    this.imageDetailList.push(this.dataSet);
-  }
-
-  getImage(value){
-    this.imageDetailList.snapshotChanges().subscribe(
-      list => {
-        this.fileList = list.map(item => { return item.payload.val();  });
-        this.fileList.forEach(element => {
-          if(element.id===value)
-          this.msg = element.url;
-        });
-        if(this.msg==='error')
-          alert('No record found');
-        else{
-          window.open(this.msg);
-          this.msg = 'error';
-        }
-      }
-    );
+    this.productListRef = this.firebase.list('product', ref => ref.orderByChild('id').equalTo(id));
+    console.log(this.productListRef)
+    // if(this.productListRef == undefined){
+      this.imageDetailList.push(this.dataSet);
+    // }
+    // else{
+    //   alert("this id:" + id + "already exists")
+    // }
   }
   deleteProduct(id: string) {
    
@@ -91,8 +80,6 @@ export class ProductService {
     console.log(id);
 
     return this.firebase.list('product', ref => ref.orderByChild('id').equalTo(id));
-
-
 
 }
 

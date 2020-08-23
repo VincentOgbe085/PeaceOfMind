@@ -26,6 +26,9 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AdminComponent } from './admin/admin.component';
 import { ApiService } from './services/api.service';
 import { FormsModule } from '@angular/forms';
+import { ShopComponent } from './shop/shop.component';
+import { BookingsComponent } from './bookings/bookings.component';
+import { HairStyleComponent } from './hair-style/hair-style.component';
 
 
 firebase.initializeApp(environment.firebase);
@@ -35,7 +38,10 @@ firebase.initializeApp(environment.firebase);
     AppComponent,
     HomeComponent,
     AboutComponent,
-    AdminComponent
+    AdminComponent,
+    ShopComponent,
+    BookingsComponent,
+    HairStyleComponent
     
   ],
   imports: [

@@ -5,17 +5,17 @@
       <input type="text" placeholder="Search.." name="search">
       
     </form>
-  <button mat-button routerLink="/">Home</button>  
+   
   <button mat-button routerLink="/about">About</button>
   <!--admin check needs to be added here so only appers when the user is the admin -->
   <button mat-button routerLink="/admin">admin</button>
   </div>
 </mat-toolbar>
 <div class="loggo">
-  <button mat-button>shop</button>
-  <button mat-button>hair</button>
-  <button mat-button>book</button>
-  <button mat-button>hair style</button>
+  <button mat-button routerLink="/">Home</button> 
+  <button mat-button routerLink="/shop">shop</button>
+  <button mat-button routerLink="/booking">booking</button>
+  <button mat-button routerLink="/hair-style">hair styles</button>
 </div>
 <hr>
 <router-outlet></router-outlet>

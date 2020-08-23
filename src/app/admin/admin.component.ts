@@ -87,9 +87,7 @@ export class AdminComponent{
     
    this.productService.Search(SearchId).valueChanges().subscribe(products => {
 
-      this.products = products;
- 
-    
+      this.products = products;  
   })
       
 
