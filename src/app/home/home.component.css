@@ -1,0 +1,11 @@
+body {
+    background-image: url("C:/Users/vincent ogbe/Desktop/mothers_hair_site/Peace-of-mind/image/test.jpg");
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+  }
+  .center {
+    width: 800px;
+  }
