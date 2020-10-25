@@ -9,16 +9,17 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule} from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
-import { from } from 'rxjs';
 import { ProductService } from './services/product.service'
 import { AngularFireDatabaseModule, AngularFireDatabase,AngularFireList} from 'angularfire2/database';
+import { CalendarModule } from '@syncfusion/ej2-angular-calendars';
+
 
 
 import * as firebase from 'firebase'; 
@@ -41,7 +42,8 @@ firebase.initializeApp(environment.firebase);
     AdminComponent,
     ShopComponent,
     BookingsComponent,
-    HairStyleComponent
+    HairStyleComponent,
+    
     
   ],
   imports: [
@@ -59,11 +61,9 @@ firebase.initializeApp(environment.firebase);
     AngularFirestoreModule,
     AngularFireDatabaseModule,
     FormsModule,
-    
-    
-    
+    CalendarModule, 
 
- 
+
   ],
   providers: [ProductService, AngularFirestore, AngularFireDatabase,ApiService],
   bootstrap: [AppComponent]

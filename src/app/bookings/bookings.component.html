@@ -1,1 +1,16 @@
-<p>bookings works!</p>
+<div>
+<div><ejs-calendar [values]='dateValues' (renderDayCell)='disabledDate($event)' ></ejs-calendar></div>
+    <div class="bookingForm">
+        <form action="/action_page.php">
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname"><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname"><br><br>
+            <label for="email">email:</label><br>
+            <input type="text" id="email" name="email"><br><br>
+            <label for="number">number:</label><br>
+            <input type="text" id="number" name="number"><br><br>
+            <input type="submit" value="Submit">
+        </form> 
+    </div>
+</div>
